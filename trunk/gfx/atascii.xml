@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<gfx-xform version="1">
+    <input file="atascii.png" type="png" tile-width="8" tile-height="8" width="128" height="64" />
+    <output file="atascii.c">
+        <tiles var-name="tiles_atascii"/>
+        <maps pointers-size="8">
+			<map var-name="bob" left="0" top="0" width="1" height="1"/>
+		</maps>	
+    </output>
+</gfx-xform>
