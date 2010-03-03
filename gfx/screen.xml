@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<gfx-xform version="1">
+    <input file="screen.png" type="png" tile-width="8" tile-height="8" width="240" height="224" />
+    <output file="screen.c">
+        <tiles var-name="tiles_screen"/>
+        <maps pointers-size="8">
+			<!-- super board area -->
+			<map var-name="map_emptySuper" left="3" top="2" width="12" height="12"/>
+		
+			<!-- balls -->
+			<map var-name="map_emptyBall" left="4" top="3" width="2" height="2"/>
+			<map var-name="map_blackBall" left="16" top="3" width="2" height="2"/>
+			<map var-name="map_whiteBall" left="20" top="3" width="2" height="2"/>
+			<map var-name="map_blackBallHl" left="16" top="7" width="2" height="2"/>
+			<map var-name="map_whiteBallHl" left="20" top="7" width="2" height="2"/>
+			
+			<!-- static elements -->
+			<map var-name="map_pentago" left="11" top="1" width="8" height="1"/>
+			<map var-name="map_status" left="3" top="26" width="24" height="1"/>
+			
+			<!-- dynamic elements -->
+			<map var-name="map_numbers" left="1" top="0" width="10" height="1"/>
+			<map var-name="map_leftArrow" left="1" top="1" width="1" height="1"/>
+			<map var-name="map_leftArrow" left="2" top="1" width="1" height="1"/>
+			<map var-name="map_playerUnderline" left="3" top="27" width="2" height="1"/>
+			
+			<!-- menus -->
+			<map var-name="map_rotateMenu" left="4" top="17" width="10" height="6"/>
+			<map var-name="map_pauseMenu" left="16" top="17" width="10" height="6"/>
+			
+			<!-- borders -->
+			<map var-name="map_borderTl" left="3" top="2" width="1" height="1"/>
+			<map var-name="map_borderT" left="4" top="2" width="1" height="1"/>
+			<map var-name="map_borderTr" left="14" top="2" width="1" height="1"/>
+			<map var-name="map_borderR" left="14" top="3" width="1" height="1"/>
+			<map var-name="map_borderBr" left="14" top="13" width="1" height="1"/>
+			<map var-name="map_borderB" left="13" top="13" width="1" height="1"/>
+			<map var-name="map_borderBl" left="3" top="13" width="1" height="1"/>
+			<map var-name="map_borderL" left="3" top="12" width="1" height="1"/>
+			
+			<!-- highlighted borders -->
+			<map var-name="map_borderTlHl" left="15" top="2" width="1" height="1"/>
+			<map var-name="map_borderTHl" left="16" top="2" width="1" height="1"/>
+			<map var-name="map_borderTrHl" left="26" top="2" width="1" height="1"/>
+			<map var-name="map_borderRHl" left="26" top="3" width="1" height="1"/>
+			<map var-name="map_borderBrHl" left="26" top="13" width="1" height="1"/>
+			<map var-name="map_borderBHl" left="25" top="13" width="1" height="1"/>
+			<map var-name="map_borderBlHl" left="15" top="13" width="1" height="1"/>
+			<map var-name="map_borderLHl" left="15" top="12" width="1" height="1"/>
+		</maps>	
+    </output>
+</gfx-xform>
