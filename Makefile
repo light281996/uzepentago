@@ -1,5 +1,5 @@
 ###############################################################################
-# Makefile for the project SpriteDemo
+# Makefile for the Pentago project
 ###############################################################################
 
 ## General Flags
@@ -12,7 +12,7 @@ INFO=gameinfo.properties
 
 ## Kernel settings
 KERNEL_DIR = ../../kernel
-KERNEL_OPTIONS  = -DVIDEO_MODE=3 -DINTRO_LOGO=0
+KERNEL_OPTIONS  = -DVIDEO_MODE=3 -DINTRO_LOGO=1
 
 
 ## Options common to compile, link and assembly rules
@@ -99,7 +99,12 @@ size: ${TARGET}
 ## Clean target
 .PHONY: clean
 clean:
-	-rm -rf $(OBJECTS) $(GAME).eep $(GAME).elf $(GAME).hex $(GAME).lss $(GAME).map $(GAME).o dep/*
+	-rm -rf $(OBJECTS) $(GAME).eep $(GAME).elf $(GAME).hex $(GAME).uze $(GAME).lss $(GAME).map $(GAME).o dep/* dep
+	
+## Tidy target - removes all build files except for final outputs
+.PHONY: tidy
+tidy:
+	-rm -rf $(OBJECTS) $(GAME).eep $(GAME).elf $(GAME).lss $(GAME).map $(GAME).o dep/* dep
 
 
 ## Other dependencies

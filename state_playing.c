@@ -1,20 +1,21 @@
-/*	The Uzebox Implementation of Pentago
+/*
+	The Uzebox Implementation of Pentago
 	Copyright 2010, Kenton Hamaluik
 
 	This file is part of The Uzebox Implementation of Pentago.
 
-    The Uzebox Implementation of Pentago is free software: you can redistribute
+	The Uzebox Implementation of Pentago is free software: you can redistribute
 	it and/or modify it under the terms of the GNU General Public License
 	as published by the Free Software Foundation, either version 3 of the
 	License, or (at your option) any later version.
 
-    The Uzebox Implementation of Pentago is distributed in the hope that it
+	The Uzebox Implementation of Pentago is distributed in the hope that it
 	will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with The Uzebox Implementation of Pentago.  If not, see
+	You should have received a copy of the GNU General Public License
+	along with The Uzebox Implementation of Pentago.  If not, see
 	<http://www.gnu.org/licenses/>.
 */
 
@@ -332,6 +333,38 @@ char FindWin()
 			// if we hit enough marbles in a row
 			if(nMarbles >= 5)
 				ret |= p;
+		}
+		
+		// now look in the diagonal directions
+		// only have to start the search from the
+		// top 4-marble quadrants
+		// draw it out on paper to understand better
+		for(char j = 0; j < 2; j++)
+		{
+			for(char i = 0; i < 2; i++)
+			{
+				bool foundf = true, foundb = true;
+				for(char h = 0; h < 5; h++)
+				{
+					// \ direction
+					if(marbles[h + j][h + i] != p)
+						foundf = false;
+					
+					// / direction
+					if(marbles[h + j][5 - h - i] != p)
+						foundb = false;
+				}
+				
+				// check if we found something
+				if(foundf || foundb)
+				{
+					// we found something
+					// report it and be done with these loops!
+					ret |= p;
+					i = 3;
+					j = 3;
+				}
+			}
 		}
 	}
 	
