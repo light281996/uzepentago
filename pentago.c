@@ -145,7 +145,7 @@ int main()
 		padPressed[0] = padHeld[0] & (padHeld[0] ^ padPrev[0]);
 		padReleased[0] = padPrev[0] & (padHeld[0] ^ padPrev[0]);
 		padPrev[0] = padHeld[0];
-		padHeld[1] = ReadJoypad(0);
+		padHeld[1] = ReadJoypad(1);
 		padPressed[1] = padHeld[1] & (padHeld[1] ^ padPrev[1]);
 		padReleased[1] = padPrev[1] & (padHeld[1] ^ padPrev[1]);
 		padPrev[1] = padHeld[1];
