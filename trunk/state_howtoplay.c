@@ -54,5 +54,8 @@ void InitState_HowToPlay()
 void DoState_HowToPlay()
 {
 	if((padReleased[0] | padReleased[1]) & BTN_B)
+	{
+		TriggerFx(5, 0xFF, true);
 		nextState = STATE_MAINMENU;
+	}
 }

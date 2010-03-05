@@ -46,5 +46,8 @@ void InitState_GameOver()
 void DoState_GameOver()
 {
 	if(padReleased[startPlayer] & BTN_B)
+	{
+		TriggerFx(5, 0xFF, true);
 		nextState = STATE_MAINMENU;
+	}
 }

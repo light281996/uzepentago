@@ -38,5 +38,8 @@ void InitState_Credits()
 void DoState_Credits()
 {
 	if((padReleased[0] | padReleased[1]) & BTN_B)
+	{
+		TriggerFx(5, 0xFF, true);
 		nextState = STATE_MAINMENU;
+	}
 }

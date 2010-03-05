@@ -30,6 +30,10 @@
 #include "atascii.c"
 #include "screen.c"
 
+// sounds
+#include "patches.c"
+#include "finalfantasy.c"
+
 // type definitions
 #define STATE_MAINMENU		(1)
 #define STATE_PLAYERSTART	(2)
@@ -41,6 +45,7 @@
 // globals
 char gameState = 0;
 char nextState = STATE_MAINMENU;
+char musicOn = 0;
 
 // text renderer
 #include "text.c"
@@ -94,6 +99,9 @@ int main()
 {
 	// clear the video
 	ClearVram(); 
+	
+	// init the music
+	InitMusicPlayer(patches);
 
 	// show the intro screen
 	DoIntro();

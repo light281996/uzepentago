@@ -204,6 +204,9 @@ void TakeMoveInput_Placing()
 	static char tmp;
 	if(padPressed[currentPlayer] & BTN_RIGHT)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		if((tmp = NextClearSocketRight(marbleX, marbleY)) > -1)
 		{
 			ClearMarble(marbleX, marbleY);
@@ -213,6 +216,9 @@ void TakeMoveInput_Placing()
 	}
 	if(padPressed[currentPlayer] & BTN_LEFT)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		if((tmp = NextClearSocketLeft(marbleX, marbleY)) > -1)
 		{
 			ClearMarble(marbleX, marbleY);
@@ -222,6 +228,9 @@ void TakeMoveInput_Placing()
 	}
 	if(padPressed[currentPlayer] & BTN_UP)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		if((tmp = NextClearSocketUp(marbleX, marbleY)) > -1)
 		{
 			ClearMarble(marbleX, marbleY);
@@ -231,6 +240,9 @@ void TakeMoveInput_Placing()
 	}
 	if(padPressed[currentPlayer] & BTN_DOWN)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		if((tmp = NextClearSocketDown(marbleX, marbleY)) > -1)
 		{
 			ClearMarble(marbleX, marbleY);
@@ -446,12 +458,16 @@ void DoPlayState_PlaceMarble()
 {
 	// update the timers
 	UpdateTimers();
+	
 	// take movement input
 	TakeMoveInput_Placing();
 	
 	// check to see if the player "placed" the marble
 	if(padPressed[currentPlayer] & BTN_A)
 	{
+		// SFX
+		TriggerFx(5, 0xFF, true);
+		
 		// place the marble
 		marbles[marbleY][marbleX] = currentPlayer + 1;
 		DrawMarble(marbleX, marbleY, 0, currentPlayer);
@@ -478,6 +494,9 @@ void DoPlayState_PlaceMarble()
 	// check for pause button
 	if(padPressed[currentPlayer] & BTN_START)
 	{
+		// SFX
+		TriggerFx(5, 0xFF, true);
+		
 		prePauseState = PLAYINGSTATE_PLACEMARBLE;
 		nextPlayingState = PLAYINGSTATE_PAUSE;
 	}
@@ -501,24 +520,36 @@ void DoPlayState_SelectSuper()
 	// take input and move the highlighter
 	if(padPressed[currentPlayer] & BTN_RIGHT && superX < 1)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		ClearSuperHighlight((2 * superY) + superX);
 		superX++;
 		DrawSuperHighlight((2 * superY) + superX);
 	}
 	if(padPressed[currentPlayer] & BTN_LEFT && superX > 0)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		ClearSuperHighlight((2 * superY) + superX);
 		superX--;
 		DrawSuperHighlight((2 * superY) + superX);
 	}
 	if(padPressed[currentPlayer] & BTN_DOWN && superY < 1)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		ClearSuperHighlight((2 * superY) + superX);
 		superY++;
 		DrawSuperHighlight((2 * superY) + superX);
 	}
 	if(padPressed[currentPlayer] & BTN_UP && superY > 0)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		ClearSuperHighlight((2 * superY) + superX);
 		superY--;
 		DrawSuperHighlight((2 * superY) + superX);
@@ -527,6 +558,9 @@ void DoPlayState_SelectSuper()
 	// take selection input
 	if(padPressed[currentPlayer] & BTN_A)
 	{
+		// SFX
+		TriggerFx(5, 0xFF, true);
+		
 		// set the selected super and clear the highlight
 		selectedSuper = (2 * superY) + superX;
 		ClearSuperHighlight(selectedSuper);
@@ -538,6 +572,9 @@ void DoPlayState_SelectSuper()
 	// check for pause button
 	if(padPressed[currentPlayer] & BTN_START)
 	{ 
+		// SFX
+		TriggerFx(5, 0xFF, true);
+		
 		prePauseState = PLAYINGSTATE_SELECTSUPER;
 		nextPlayingState = PLAYINGSTATE_PAUSE;
 	}
@@ -561,6 +598,9 @@ void DoPlayState_SelectRotate()
 	// take the selection input
 	if(padPressed[currentPlayer] & BTN_RIGHT && rotateSelect == 0)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		// set the selection
 		rotateSelect = 1;
 		
@@ -570,6 +610,9 @@ void DoPlayState_SelectRotate()
 	}
 	else if(padPressed[currentPlayer] & BTN_LEFT && rotateSelect == 1)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		// set the selection
 		rotateSelect = 0;
 		
@@ -581,6 +624,9 @@ void DoPlayState_SelectRotate()
 	// check for selection
 	if(padPressed[currentPlayer] & BTN_A)
 	{
+		// SFX
+		TriggerFx(5, 0xFF, true);
+		
 		// rotate the selected super block
 		RotateSuper(selectedSuper, rotateSelect);
 		
@@ -621,6 +667,9 @@ void DoPlayState_SelectRotate()
 	// check for pause button
 	if(padPressed[currentPlayer] & BTN_START)
 	{
+		// SFX
+		TriggerFx(5, 0xFF, true);
+		
 		prePauseState = PLAYINGSTATE_SELECTROTATE;
 		nextPlayingState = PLAYINGSTATE_PAUSE;
 	}
@@ -647,6 +696,9 @@ void DoPlayState_Pause()
 	// take the selection input
 	if(padPressed[currentPlayer] & BTN_DOWN && pauseSelect == 0)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		// set the selection
 		pauseSelect = 1;
 		
@@ -656,6 +708,9 @@ void DoPlayState_Pause()
 	}
 	else if(padPressed[currentPlayer] & BTN_UP && pauseSelect == 1)
 	{
+		// SFX
+		TriggerFx(4, 0xFF, true);
+		
 		// set the selection
 		pauseSelect = 0;
 		
@@ -665,8 +720,11 @@ void DoPlayState_Pause()
 	}
 
 	// go back
-	if(padPressed[currentPlayer] & BTN_B || (padPressed[currentPlayer] & BTN_A && pauseSelect == 0))
+	if((padPressed[currentPlayer] & BTN_B) || (padPressed[currentPlayer] & BTN_A && pauseSelect == 0))
 	{
+		// SFX
+		TriggerFx(5, 0xFF, true);
+		
 		// reset the screen
 		// draw the super blocks
 		DrawMap2(3, 2, map_emptySuper);
@@ -686,6 +744,9 @@ void DoPlayState_Pause()
 	// check for quit
 	if(padPressed[currentPlayer] & BTN_A && pauseSelect == 1)
 	{
+		// SFX
+		TriggerFx(5, 0xFF, true);
+		
 		if(currentPlayer == 0)
 			wonPlayer = 2;
 		else

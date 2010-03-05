@@ -46,5 +46,8 @@ void InitState_PlayerStart()
 void DoState_PlayerStart()
 {
 	if(padReleased[startPlayer] & BTN_START)
+	{
+		TriggerFx(5, 0xFF, true);
 		nextState = STATE_PLAYING;
+	}
 }
