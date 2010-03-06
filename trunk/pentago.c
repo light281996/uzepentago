@@ -26,7 +26,7 @@
 #include <uzebox.h>
 
 // graphics
-#include "intro.c"
+#include "mammoth.c"
 #include "atascii.c"
 #include "screen.c"
 
@@ -74,8 +74,8 @@ void DoIntro()
 	// random number generator seed
 	int rndSeed = 0;
 	
-	SetTileTable(tiles_intro);
-	DrawMap2(0, 0, map_intro);
+	SetTileTable(tiles_mammoth);
+	DrawMap2(0, 0, map_mammoth);
 	
 	// game loop
 	char quit = 0;
