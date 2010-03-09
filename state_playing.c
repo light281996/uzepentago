@@ -72,7 +72,7 @@ char FirstClearSocket()
 	return -1;
 }
 
-char NextClearSocketLeft(char x, char y)
+/*char NextClearSocketLeft(char x, char y)
 {
 	for(char _x = x - 1; _x >= 0; _x--)
 		if(marbles[y][_x] == 0)
@@ -102,7 +102,7 @@ char NextClearSocketDown(char x, char y)
 		if(marbles[_y][x] == 0)
 			return _y;
 	return -1;
-}
+}*/
 
 void UpdateTimers()
 {
@@ -207,11 +207,26 @@ void TakeMoveInput_Placing()
 		// SFX
 		TriggerFx(4, 0xFF, true);
 		
-		if((tmp = NextClearSocketRight(marbleX, marbleY)) > -1)
+		/*if((tmp = NextClearSocketRight(marbleX, marbleY)) > -1)
 		{
 			ClearMarble(marbleX, marbleY);
 			marbleX = tmp;
 			DrawMarble(marbleX, marbleY, 1, currentPlayer);
+		}*/
+		if(marbleX < 6)
+		{
+			if(marbles[marbleY][marbleX] > 0)
+			{
+				DrawMarble(marbleX, marbleY, 0, (marbles[marbleY][marbleX] - 1));
+				marbleX++;
+				DrawMarble(marbleX, marbleY, 1, currentPlayer);
+			}
+			else
+			{
+				ClearMarble(marbleX, marbleY);
+				marbleX++;
+				DrawMarble(marbleX, marbleY, 1, currentPlayer);
+			}
 		}
 	}
 	if(padPressed[currentPlayer] & BTN_LEFT)
@@ -219,11 +234,26 @@ void TakeMoveInput_Placing()
 		// SFX
 		TriggerFx(4, 0xFF, true);
 		
-		if((tmp = NextClearSocketLeft(marbleX, marbleY)) > -1)
+		/*if((tmp = NextClearSocketLeft(marbleX, marbleY)) > -1)
 		{
 			ClearMarble(marbleX, marbleY);
 			marbleX = tmp;
 			DrawMarble(marbleX, marbleY, 1, currentPlayer);
+		}*/
+		if(marbleX > -1)
+		{
+			if(marbles[marbleY][marbleX] > 0)
+			{
+				DrawMarble(marbleX, marbleY, 0, (marbles[marbleY][marbleX] - 1));
+				marbleX--;
+				DrawMarble(marbleX, marbleY, 1, currentPlayer);
+			}
+			else
+			{
+				ClearMarble(marbleX, marbleY);
+				marbleX--;
+				DrawMarble(marbleX, marbleY, 1, currentPlayer);
+			}
 		}
 	}
 	if(padPressed[currentPlayer] & BTN_UP)
@@ -231,11 +261,26 @@ void TakeMoveInput_Placing()
 		// SFX
 		TriggerFx(4, 0xFF, true);
 		
-		if((tmp = NextClearSocketUp(marbleX, marbleY)) > -1)
+		/*if((tmp = NextClearSocketUp(marbleX, marbleY)) > -1)
 		{
 			ClearMarble(marbleX, marbleY);
 			marbleY = tmp;
 			DrawMarble(marbleX, marbleY, 1, currentPlayer);
+		}*/
+		if(marbleY > -1)
+		{
+			if(marbles[marbleY][marbleX] > 0)
+			{
+				DrawMarble(marbleX, marbleY, 0, (marbles[marbleY][marbleX] - 1));
+				marbleY--;
+				DrawMarble(marbleX, marbleY, 1, currentPlayer);
+			}
+			else
+			{
+				ClearMarble(marbleX, marbleY);
+				marbleY--;
+				DrawMarble(marbleX, marbleY, 1, currentPlayer);
+			}
 		}
 	}
 	if(padPressed[currentPlayer] & BTN_DOWN)
@@ -243,11 +288,26 @@ void TakeMoveInput_Placing()
 		// SFX
 		TriggerFx(4, 0xFF, true);
 		
-		if((tmp = NextClearSocketDown(marbleX, marbleY)) > -1)
+		/*if((tmp = NextClearSocketDown(marbleX, marbleY)) > -1)
 		{
 			ClearMarble(marbleX, marbleY);
 			marbleY = tmp;
 			DrawMarble(marbleX, marbleY, 1, currentPlayer);
+		}*/
+		if(marbleY < 6)
+		{
+			if(marbles[marbleY][marbleX] > 0)
+			{
+				DrawMarble(marbleX, marbleY, 0, (marbles[marbleY][marbleX] - 1));
+				marbleY++;
+				DrawMarble(marbleX, marbleY, 1, currentPlayer);
+			}
+			else
+			{
+				ClearMarble(marbleX, marbleY);
+				marbleY++;
+				DrawMarble(marbleX, marbleY, 1, currentPlayer);
+			}
 		}
 	}
 }
@@ -465,30 +525,38 @@ void DoPlayState_PlaceMarble()
 	// check to see if the player "placed" the marble
 	if(padPressed[currentPlayer] & BTN_A)
 	{
-		// SFX
-		TriggerFx(5, 0xFF, true);
 		
-		// place the marble
-		marbles[marbleY][marbleX] = currentPlayer + 1;
-		DrawMarble(marbleX, marbleY, 0, currentPlayer);
-		
-		// load up the super selecting state
-		nextPlayingState = PLAYINGSTATE_SELECTSUPER;
-		
-		// check for win
-		int winner = FindWin();
-		if(winner > 0)
+		// make sure there isn't already a marble down there
+		if(marbles[marbleY][marbleX] == 0)
 		{
-			// we found a winner, now find out if it was a tie
-			if(winner == 3)
-				wonPlayer = 0;
-			else
-				wonPlayer = winner; // set the winner
-				
-			// set the state
-			nextState = STATE_GAMEOVER;
-			nextPlayingState = -1;
+			// SFX
+			TriggerFx(5, 0xFF, true);
+		
+			// place the marble
+			marbles[marbleY][marbleX] = currentPlayer + 1;
+			DrawMarble(marbleX, marbleY, 0, currentPlayer);
+			
+			// load up the super selecting state
+			nextPlayingState = PLAYINGSTATE_SELECTSUPER;
+			
+			// check for win
+			int winner = FindWin();
+			if(winner > 0)
+			{
+				// we found a winner, now find out if it was a tie
+				if(winner == 3)
+					wonPlayer = 0;
+				else
+					wonPlayer = winner; // set the winner
+					
+				// set the state
+				nextState = STATE_GAMEOVER;
+				nextPlayingState = -1;
+			}
 		}
+		else
+			// SFX
+			TriggerFx(6, 0xFF, true);
 	}
 	
 	// check for pause button
