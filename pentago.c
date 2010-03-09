@@ -32,7 +32,6 @@
 
 // sounds
 #include "patches.c"
-#include "finalfantasy.c"
 
 // type definitions
 #define STATE_MAINMENU		(1)
