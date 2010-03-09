@@ -55,11 +55,20 @@ const char patch05[] PROGMEM ={
 0,PATCH_END
 };
 
+// error oop
+const char patch06[] PROGMEM ={
+0,PC_WAVE,0,
+0,PC_PITCH,38,
+0,PC_ENV_SPEED,-30,
+0,PATCH_END
+};
+
 const struct PatchStruct patches[] PROGMEM = {
 {0,NULL,patch00,0,0},
 {0,NULL,patch01,0,0},
 {0,NULL,patch02,0,0},
 {0,NULL,patch03,0,0},
 {0,NULL,patch04,0,0},
-{0,NULL,patch05,0,0}
+{0,NULL,patch05,0,0},
+{0,NULL,patch06,0,0}
 };
