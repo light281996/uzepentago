@@ -31,20 +31,13 @@ void InitState_MainMenu()
 	InitText();
 	
 	// draw the menu
-	PrintStr(9, 8, "Pentago!");
-	PrintStr(11, 10, "New Game");
-	PrintStr(11, 12, "Music");
-	PrintStr(11, 14, "How To Play");
-	PrintStr(11, 16, "Credits");
+	PrintStr(9, 9, "Pentago!");
+	PrintStr(11, 11, "New Game");
+	PrintStr(11, 13, "How To Play");
+	PrintStr(11, 15, "Credits");
 	
 	// draw the selector
-	SetTile(10, 10 + (2 * currentOpt), 127);
-	
-	// draw the music indicator
-	if(!musicOn)
-		PrintStr(17, 12, "(Off)");
-	else
-		PrintStr(17, 12, "(On) ");
+	SetTile(10, 11 + (2 * currentOpt), 127);
 	
 	// fade in
 	FadeIn(1, true);
@@ -53,48 +46,25 @@ void InitState_MainMenu()
 void DoState_MainMenu()
 {
 	// move the selector
-	if((padPressed[0] | padPressed[1]) & BTN_DOWN && currentOpt < 3)
+	if((padPressed[0] | padPressed[1]) & BTN_DOWN && currentOpt < 2)
 	{
 		TriggerFx(4, 0xFF, true);
-		SetTile(10, 10 + (2 * currentOpt), ' ');
+		SetTile(10, 11 + (2 * currentOpt), ' ');
 		currentOpt++;
-		SetTile(10, 10 + (2 * currentOpt), 127);
+		SetTile(10, 11 + (2 * currentOpt), 127);
 	}
 	if((padPressed[0] | padPressed[1]) & BTN_UP && currentOpt > 0)
 	{
 		TriggerFx(4, 0xFF, true);
-		SetTile(10, 10 + (2 * currentOpt), ' ');
+		SetTile(10, 11 + (2 * currentOpt), ' ');
 		currentOpt--;
-		SetTile(10, 10 + (2 * currentOpt), 127);
+		SetTile(10, 11 + (2 * currentOpt), 127);
 	}
 	
 	// take the selection input
 	if((padPressed[0] | padPressed[1]) & BTN_A)
 	{
 		TriggerFx(5, 0xFF, true);
-		if(currentOpt == 1)
-		{
-			// toggle the music
-			musicOn = 1 - musicOn;
-			
-			// draw the music indicator
-			if(!musicOn)
-			{
-				StopSong();
-				PrintStr(17, 12, "(Off)");
-			}
-			else
-			{
-				StartSong(song_finalfantasy);
-				PrintStr(17, 12, "(On) ");
-			}
-		}
-		else
-		{
-			if(currentOpt == 0)
-				nextState = STATE_PLAYERSTART;
-			else
-				nextState = currentOpt + 1;
-		}
+		nextState = currentOpt + 2;
 	}
 }
