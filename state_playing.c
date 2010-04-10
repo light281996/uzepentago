@@ -213,7 +213,7 @@ void TakeMoveInput_Placing()
 			marbleX = tmp;
 			DrawMarble(marbleX, marbleY, 1, currentPlayer);
 		}*/
-		if(marbleX < 6)
+		if(marbleX < 5)
 		{
 			if(marbles[marbleY][marbleX] > 0)
 			{
@@ -240,7 +240,7 @@ void TakeMoveInput_Placing()
 			marbleX = tmp;
 			DrawMarble(marbleX, marbleY, 1, currentPlayer);
 		}*/
-		if(marbleX > -1)
+		if(marbleX > 0)
 		{
 			if(marbles[marbleY][marbleX] > 0)
 			{
@@ -267,7 +267,7 @@ void TakeMoveInput_Placing()
 			marbleY = tmp;
 			DrawMarble(marbleX, marbleY, 1, currentPlayer);
 		}*/
-		if(marbleY > -1)
+		if(marbleY > 0)
 		{
 			if(marbles[marbleY][marbleX] > 0)
 			{
@@ -294,7 +294,7 @@ void TakeMoveInput_Placing()
 			marbleY = tmp;
 			DrawMarble(marbleX, marbleY, 1, currentPlayer);
 		}*/
-		if(marbleY < 6)
+		if(marbleY < 5)
 		{
 			if(marbles[marbleY][marbleX] > 0)
 			{
