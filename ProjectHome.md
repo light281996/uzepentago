@@ -1,0 +1,1 @@
+A simple Uzebox clone of the Swedish game "Pentago". Requires two players, no AI is implemented or planned. Created as an introduction to Uzebox programming for myself, source released for the learning and betterment of others.
